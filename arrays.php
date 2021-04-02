@@ -49,7 +49,9 @@ class Student {
     public function __call($name, $params){
         return 'Call'. $name. ' '.print_r($params,true);
     }
-
+    public function __toString(){
+        return $this->getFullName();
+    }
 }
 
 $student=new Student('cull','yeah');
@@ -59,4 +61,5 @@ $student -> ccc = 11;
 
 echo $student->getFullName().PHP_EOL;
 echo print_r($student->attributes).PHP_EOL;
-echo $student->move(123,12).PHP_EOL;
+echo $student->move(123,12).PHP_EOL; //__call
+echo 'I print '. $student.PHP_EOL;// вызывается если распечатать класс как строку
